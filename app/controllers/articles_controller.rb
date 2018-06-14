@@ -5,6 +5,7 @@ class ArticlesController < ApplicationController
   # GET /articles.json
   def index
     @articles = Article.all
+    flash[:notice2] = "Flash notice sent from the controller, "
   end
 
   # GET /articles/1
@@ -44,6 +45,7 @@ class ArticlesController < ApplicationController
       if @article.update(article_params)
         format.html { redirect_to @article, notice: 'Article was successfully updated.' }
         format.json { render :show, status: :ok, location: @article }
+
       else
         format.html { render :edit }
         format.json { render json: @article.errors, status: :unprocessable_entity }
