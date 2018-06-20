@@ -1,6 +1,9 @@
 <h1>Editing Article</h1>
 
 <%= render 'form', article: @article %>
+<br /><br />
+<div class="col-xs-4 col-xs-offset-6 ">
+  <%= link_to 'Show', @article, class: "btn btn-info" %> |
+  <%= link_to 'Cancel and go back', articles_path, class: "btn btn-warning" %>
+</div>
 
-<%= link_to 'Show', @article %> |
-<%= link_to 'Back', articles_path %>
