@@ -5,7 +5,10 @@ class ArticlesController < ApplicationController
   # GET /articles.json
   def index
     @articles = Article.all
-    flash[:notice2] = "Flash notice sent from the controller, "
+    flash[:info] =    "Flash notice [INFO]sent from the controller"
+    flash[:danger] =  "Flash notice [DANGER] sent from the controller"
+    flash[:warning] = "Flash notice [WARNING] sent from the controller"
+    flash[:success] = "Flash notice [SUCCESS] sent from the controller"
   end
 
   # GET /articles/1
