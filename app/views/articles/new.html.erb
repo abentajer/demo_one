@@ -1,5 +1,5 @@
 <%= render "shared/flash"%>
-<%= render "shared/errors"%>
+<%= render "shared/errors", obj: @article%>
 <h1>New Article</h1>
 
 <%= render 'form', article: @article %>
