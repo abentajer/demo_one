@@ -5,7 +5,8 @@ class ArticlesController < ApplicationController
   # GET /articles.json
   def index
     @articles = Article.all
-    flash[:notice2] = "Flash notice sent from the controller, "
+    flash[:warning] = "Flash notice [WARNING] sent from the controller"
+
   end
 
   # GET /articles/1
@@ -31,6 +32,7 @@ class ArticlesController < ApplicationController
       if @article.save
         format.html { redirect_to @article, notice: 'Article was successfully created.' }
         format.json { render :show, status: :created, location: @article }
+        flash[:info] =    "Flash notice : #{@article.title} successfully created"
       else
         format.html { render :new }
         format.json { render json: @article.errors, status: :unprocessable_entity }
@@ -45,7 +47,7 @@ class ArticlesController < ApplicationController
       if @article.update(article_params)
         format.html { redirect_to @article, notice: 'Article was successfully updated.' }
         format.json { render :show, status: :ok, location: @article }
-
+        flash[:success] = "Flash notice: #{@article.title} successfully updated"
       else
         format.html { render :edit }
         format.json { render json: @article.errors, status: :unprocessable_entity }
@@ -56,11 +58,13 @@ class ArticlesController < ApplicationController
   # DELETE /articles/1
   # DELETE /articles/1.json
   def destroy
+    flash[:danger] =  "Flash notice: #{@article.title} successfully deleted"
     @article.destroy
     respond_to do |format|
       format.html { redirect_to articles_url, notice: 'Article was successfully destroyed.' }
       format.json { head :no_content }
     end
+
   end
 
   private
