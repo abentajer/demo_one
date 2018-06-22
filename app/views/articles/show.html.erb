@@ -1,3 +1,8 @@
+<ol class="breadcrumb">
+  <li>Author : </li>
+  <li><%= link_to "#{@article.user.username}", user_path(@article.user)  %></li>
+</ol>
+
 <h2 align="center">
   <strong>Title:</strong> <%= @article.title %>
 </h2>

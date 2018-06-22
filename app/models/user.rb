@@ -1,5 +1,6 @@
 class User < ApplicationRecord
   has_many :comments
+  has_many :articles
 
   before_save {self.email = email.downcase}
   before_save { self.password = password.hash}
