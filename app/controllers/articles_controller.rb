@@ -27,7 +27,7 @@ class ArticlesController < ApplicationController
   # POST /articles.json
   def create
     @article = Article.new(article_params)
-
+    @article.user = User.find(1)
     respond_to do |format|
       if @article.save
         format.html { redirect_to @article, notice: 'Article was successfully created.' }
@@ -67,6 +67,10 @@ class ArticlesController < ApplicationController
 
   end
 
+  def piiw
+    @user = User.find(1)
+    @articles = @user.articles.all
+  end
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_article
