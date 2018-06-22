@@ -3,8 +3,7 @@ class User < ApplicationRecord
   has_many :articles
 
   before_save {self.email = email.downcase}
-  before_save { self.password = password.hash}
-  before_update {self.password = password.hash}
+
 
   validates :username,
             presence: true,
@@ -18,5 +17,7 @@ class User < ApplicationRecord
             length: {minimum: 5},
             uniqueness: true,
             format: {with: VALID_EMAIL_REGEX, message: "Not a valid email"}
+
+  has_secure_password
 
 end
